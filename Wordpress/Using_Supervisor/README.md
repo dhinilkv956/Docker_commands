@@ -12,3 +12,5 @@
 [Supervisordconf](https://github.com/dhinilkv956/Docker_commands/blob/master/Wordpress/Using_Supervisor/supervisord.conf)
 
 <p>Two programs are defined to be run and monitored: mysqld and httpd . Each program can use various options like autorestart and autostart . The most important directive is command , which defines how to run each program. With this configuration, a Docker container needs to run only a single foreground process: supervisord .Hence the line in the Dockerfile, CMD <strong>["/usr/bin/supervisord"] .</strong></p>
+
+<p>$ docker build -t wordpress .<br />$ docker run -d -p 80:80 wordpress</p>
