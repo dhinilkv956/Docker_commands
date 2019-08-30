@@ -13,4 +13,7 @@
 
 <p>Two programs are defined to be run and monitored: mysqld and httpd . Each program can use various options like autorestart and autostart . The most important directive is command , which defines how to run each program. With this configuration, a Docker container needs to run only a single foreground process: supervisord .Hence the line in the Dockerfile, CMD <strong>["/usr/bin/supervisord"] .</strong></p>
 
-<p>$ docker build -t wordpress .<br />$ docker run -d -p 80:80 wordpress</p>
+<p><strong>$ docker build -t wordpress .</strong></p>
+<p><strong>$ docker run -d -p 80:80 wordpress</strong></p>
+
+<p><strong>Discussion</strong><br />Although using Supervisor to run multiple application services in a single container works perfectly, it is better to use multiple containers. It promotes the isolation of concerns using containers and helps create a microservices-based design for your application Ultimately, this will help with scale and resiliency.</p>
