@@ -4,3 +4,8 @@
 <p>A way to keep the data, even when containers are removed with the docker rm -v command, is to mount a volume from your Docker host inside a container. If you were to delete the MySQL container with only the docker rm command, the volume defined by the image would still persist even if you delete the container. If you look at the Dockerfile used to build the MySQL image, you sill see a reference to VOLUME /var/lib/mysql . This means that when you start a container based on this image, you can bind mount a host directory to this mount point inside the container.<br />Let&rsquo;s do it:</p>
 <p><strong>$ docker run --name mysqlwp -e MYSQL_ROOT_PASSWORD=wordpressdocker -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wordpress -e MYSQL_PASSWORD=wordpresspwd -v /home/docker/mysql:/var/lib/mysql -d mysql</strong></p>
 <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>
+
+
+<p>Note the -v /home/docker/mysql:/var/lib/mysql line that performs this mount.</p>
+<p>After doing the WordPress configuration, the /home/docker/mysql directory on the<br />host is populated:<br /><strong>$ ls mysql/</strong><br /><strong>auto.cnf ibdata1ib_logfile0 ib_logfile1 mysql performance_schema wordpress</strong></p>
+<p>To get a dump of the entire MySQL database, use the docker exec command to run mysqldump inside the container:<br /><strong>$ docker exec mysqlwp mysqldump --all-databases --password=wordpressdocker &gt; wordpress.backup</strong></p>
