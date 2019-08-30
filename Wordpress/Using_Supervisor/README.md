@@ -1,7 +1,7 @@
 <p><strong>Problem</strong></p>
 <p>would like to run all services needed for your application in a single container. Specifically for running WordPress, you would like to run MySQL and HTTPD at the same time in a container. Because Docker executes foreground processes, you need to figure out a way to run multiple &ldquo;foreground&rdquo; processes simultaneously.</p>
 <p><strong>Solution</strong></p>
-<p>Use Supervisor to monitor and run both MySQL and HTTPD. Supervisor is not an<br />init system, but is meant to control multiple processes and is run like any other pro‐<br />gram.</p>
+<p>Use Supervisor to monitor and run both MySQL and HTTPD. Supervisor is not an init system, but is meant to control multiple processes and is run like any other program.</p>
 
 [Dockerfile](https://github.com/dhinilkv956/Docker_commands/blob/master/Wordpress/Using_Supervisor/Dockerfile)
 
